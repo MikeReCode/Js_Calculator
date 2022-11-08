@@ -1,0 +1,21 @@
+.calculator-container{
+    display: grid;
+    grid-template-columns: repeat(4, 80px [col-end]);
+    gap: 3px;
+    text-align: center;
+}
+
+#display{
+    grid-column: span 4;
+    text-align: right;
+    background-color: rgb(196, 216, 216);
+    padding: 0 5px;
+}
+
+.btn{
+    background-color: antiquewhite;
+}
+
+[id="0"], #clear{
+    grid-column: span 2;
+}
