@@ -1,4 +1,5 @@
 const display = document.querySelector("#display")
+const memoryDisplay = document.querySelector("#memory-display")
 const btns = document.querySelectorAll(".btn")
 
 let numToDisplay = []
@@ -29,9 +30,35 @@ function refreshDisplay(){
     if (numToDisplay.length === 0) {
         display.textContent = "0";
         console.log("esta vacio");
+        
     
     }else {
         display.textContent = numToDisplay.join("")
+        
+    }
+    if (action != undefined){
+        let sign;
+        switch (action) {
+            case add:
+                sign = "+"
+                break;
+
+            case subtract:
+                sign = "-"
+                break;
+
+            case multiply:
+                sign = "*"
+                break;
+
+            case divide:
+                sign = "/"
+                break;
+        
+            default:
+                break;
+        }
+        memoryDisplay.textContent = `${numA} ${sign}`
     }
 }
 
@@ -45,6 +72,7 @@ function resetValues(){
     numToDisplay = []
     action = undefined
     numB = undefined
+    memoryDisplay.textContent = "0"
     refreshDisplay()
 }
 
@@ -87,7 +115,10 @@ function evaluate (act) {
         case "equal":
             if(action != undefined && numB != undefined){
                 numB = Number(numToDisplay.join(""))
-                const result = equal();
+                let result = equal();
+                if (result.toString().length > 10) {
+                    result = result.toExponential(6)
+                }
                 display.textContent = result;
             }
             break;
@@ -95,6 +126,9 @@ function evaluate (act) {
         case "delete":
             numToDisplay.pop();
             refreshDisplay();
+            if (action === undefined) {
+                numA = Number(numToDisplay.join(""))
+            }
             break;
 
         case "dot":
@@ -102,6 +136,11 @@ function evaluate (act) {
                 numToDisplay.push(".")
                 refreshDisplay();
             }
+            break;
+
+        case "clear":
+            numA = 0;
+            resetValues()
             break;
     
         default:
@@ -123,16 +162,15 @@ function equal () {
 
 
 const add = function(a, b) {
-	return a + b
+    return a + b
 };
 
 const subtract = function(a, b) {
 	return a - b
 };
 
-
 const multiply = function(a, b) {
-  return a * b
+    return a * b
 };
 
 const divide = function(a, b) {
