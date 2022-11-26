@@ -20,7 +20,7 @@ for (const btn of btns) {
             }
             
             refreshDisplay()
-            console.log(numA, numB, action);
+            //console.log(numA, numB, action);
         }else{evaluate(btn.id)}
 
     })
@@ -29,7 +29,7 @@ for (const btn of btns) {
 function refreshDisplay(){
     if (numToDisplay.length === 0) {
         display.textContent = "0";
-        console.log("esta vacio");
+
         
     
     }else {
