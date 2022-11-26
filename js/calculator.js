@@ -48,11 +48,11 @@ function refreshDisplay(){
                 break;
 
             case multiply:
-                sign = "*"
+                sign = "×"
                 break;
 
             case divide:
-                sign = "/"
+                sign = '÷'
                 break;
         
             default:
@@ -72,7 +72,7 @@ function resetValues(){
     numToDisplay = []
     action = undefined
     numB = undefined
-    memoryDisplay.textContent = "0"
+    memoryDisplay.textContent = ""
     refreshDisplay()
 }
 
@@ -90,7 +90,7 @@ function evaluate (act) {
             resetDisplay()
             break;
 
-        case "rest":
+        case "subtract":
             finisPreviousEvaluation()
             action = subtract
             resetDisplay()
@@ -108,16 +108,12 @@ function evaluate (act) {
             resetDisplay()
             break;
 
-        case "change-sign":
-            console.log("multiplicat");
-            break;
-
         case "equal":
             if(action != undefined && numB != undefined){
                 numB = Number(numToDisplay.join(""))
                 let result = equal();
                 if (result.toString().length > 10) {
-                    result = result.toExponential(6)
+                    result = result.toExponential(2)
                 }
                 display.textContent = result;
             }
