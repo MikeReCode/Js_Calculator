@@ -3,50 +3,105 @@ body{
     justify-content: center ;
     align-items: center;
     height: 100vh;
+    background-image: linear-gradient(to right, #2196f3, #f44336);
 
 }
 
 .calculator-container{
     display: grid;
-    grid-template-columns: repeat(4, 80px [col-end]);
-    grid-template-rows: auto auto repeat(5, 80px);
-    gap: 3px;
+    grid-template-columns: repeat(4, 55px [col-end]);
+    grid-template-rows: auto repeat(5, 55px);
+    gap: 10px;
     text-align: center;
     font-size: 30px;
+    padding: 15px;
+    background-color: whitesmoke;
+    border-radius: 20px;
     
 }
 
 .display-container {
+    overflow: hidden;
     grid-column: span 4;
     text-align: right;
-    background-color: rgb(196, 216, 216);
+    background-color: rgb(102, 144, 196);
     padding: 0 5px;
-    border: 2px solid black;
+    border-radius: 20px 20px 0 0;
+    margin: -15px -15px 0px -15px;
+    color: aliceblue;
+    font-family: "Courier New", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 100;
+    
 }
 
 #display{
+    display: flex;
+    justify-content: end;
+    align-items: center;
     font-size: 50px;
+    height: 2em;
+    padding: 0 30px;
+    
+}
+
+#memory-display{
+    padding: 3px 30px;
+    height: 1em;
+    background-color: rgb(81, 116, 159);
+    margin-right: -5px;
+    margin-left: -5px;
 }
 
 
 .btn{
     background-color: antiquewhite;
+    border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
     font-size: 25px;
     cursor: pointer;
     transition: .05s;
+    box-shadow: 3.5px -0.5px 10px -1.5px #919191;
 }
+
+.number, #dot{
+    color: rgb(111, 157, 213);
+    background-color: whitesmoke;
+}
+
+#clear, #delete{
+    color: rgb(111, 157, 213);
+    background-color: rgb(243, 237, 237);
+}
+
+#divide, #multiply, #subtract, #add{
+    color: whitesmoke;
+    background-color: #3f5e82;
+}
+#equal {
+    color: whitesmoke;
+    background-color: #df7136;
+}
+
 
 [id="0"], #clear{
     grid-column: span 2;
+    border-radius: 20px;
 }
 
 
 
 .clicado {
-    background-color: green;
+    background-color: #e0e0e0 !important;
+    transform: scale(1.1);
+}
+.clicado-action {
+    background-color: #35506e !important;
+    transform: scale(1.1);
+}
+
+.clicado-equal {
+    background-color: #b45725 !important;
     transform: scale(1.1);
 }
